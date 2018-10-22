@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "typescript-expo-apollo-boilerplate",
+    "slug": "typescript-expo-apollo-boilerplate",
+    "privacy": "public",
+    "sdkVersion": "30.0.0",
+    "ios": {
+      "supportsTablet": true
+    },
+    "packagerOpts": {
+      "sourceExts": ["ts", "tsx"],
+      "transformer": "node_modules/react-native-typescript-transformer/index.js"
+    }
+  }
+}
