@@ -19,3 +19,7 @@ $ cd typescript-expo-apollo-boilerplate
 $ npm install
 $ npm start
 ```
+
+## Blogs
+
+- [Clean Expo (React Native) + React Apollo (GraphQL) + TypeScript boilerplate](https://medium.com/@dai_shi/clean-expo-react-native-react-apollo-graphql-typescript-boilerplate-89bf6ff940de)
