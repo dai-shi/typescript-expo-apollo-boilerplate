@@ -22,9 +22,9 @@ class QueryPosts extends Query<IData> {}
 const PostList = () => (
   <QueryPosts query={QUERY_POSTS}>
     {({ loading, error, data }) => {
-      if (loading) return 'Loading...';
-      if (error) return `Error: ${error}`;
-      if (!data) return 'No Data';
+      if (loading) return <Text>Loading...</Text>;
+      if (error) return <Text>Error: {error}</Text>;
+      if (!data) return <Text>No Data</Text>;
       return (
         <FlatList
           data={data.posts}
