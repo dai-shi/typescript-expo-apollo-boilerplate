@@ -7,9 +7,6 @@
     "ios": {
       "supportsTablet": true
     },
-    "packagerOpts": {
-      "sourceExts": ["ts", "tsx"],
-      "transformer": "node_modules/react-native-typescript-transformer/index.js"
-    }
+    "description": "Clean boilerplate for TypeScript + Expo (React Native) + React Apollo (GraphQL)"
   }
 }
