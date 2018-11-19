@@ -36,6 +36,7 @@
     "@types/react-native": "^0.57.7",
     "@types/react-navigation": "^2.0.24",
     "expo-cli": "^2.4.0",
+    "react-dom": "^16.6.3",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.0",
     "typescript": "^3.1.3"
