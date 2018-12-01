@@ -2,10 +2,12 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es2015", "esnext.asynciterable"],
-    "jsx": "react",
+    "jsx": "react-native",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "types": []
+    "types": [
+      "jest"
+    ]
   }
 }

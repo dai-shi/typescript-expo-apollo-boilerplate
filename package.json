@@ -7,9 +7,11 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "test": "npm run tslint && npm run tsc-test",
+    "test": "npm run tslint && npm run tsc-test && npm run jest",
     "tslint": "tslint --project .",
-    "tsc-test": "tsc --project . --noEmit"
+    "tsc-test": "tsc --project . --noEmit",
+    "jest": "jest",
+    "jest-watch": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -32,13 +34,42 @@
   "devDependencies": {
     "@types/expo": "^31.0.1",
     "@types/graphql": "^14.0.3",
+    "@types/jest": "^23.3.10",
     "@types/react": "^16.7.11",
     "@types/react-native": "^0.57.15",
     "@types/react-navigation": "^2.13.7",
+    "@types/react-test-renderer": "^16.0.3",
     "expo-cli": "^2.6.0",
+    "jest": "^23.6.0",
+    "jest-expo": "^31.0.0",
     "react-dom": "^16.6.3",
+    "react-test-renderer": "^16.6.3",
+    "ts-jest": "^23.10.5",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.2.1"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testMatch": [
+      "**/__tests__/**/*.ts?(x)",
+      "**/?(*.)+(spec|test).ts?(x)"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "tsx"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": {
+          "jsx": "react"
+        }
+      }
+    }
   }
 }
