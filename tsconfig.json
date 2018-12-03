@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es2015", "esnext.asynciterable"],
+    "target": "es2017",
+    "lib": ["es2017", "esnext.asynciterable"],
+    "moduleResolution": "node",
     "jsx": "react-native",
     "strict": true,
     "noUnusedLocals": true,
