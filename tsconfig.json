@@ -9,6 +9,13 @@
     "noUnusedParameters": true,
     "types": [
       "jest"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "expo": [
+        "node_modules/@types/expo",
+        "node_modules/expo"
+      ]
+    }
   }
 }
