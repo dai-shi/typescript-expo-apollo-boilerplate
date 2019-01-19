@@ -1,4 +1,6 @@
 {
+  "name": "typescript-expo-apollo-boilerplate",
+  "displayName": "typescript-expo-apollo-boilerplate",
   "expo": {
     "name": "typescript-expo-apollo-boilerplate",
     "slug": "typescript-expo-apollo-boilerplate",
