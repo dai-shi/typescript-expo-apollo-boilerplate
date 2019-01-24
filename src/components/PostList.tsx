@@ -13,17 +13,27 @@ query queryPosts {
 }
 `;
 
-interface IData {
-  posts: Array<{ text: string, id: number }>;
+interface Data {
+  posts: {
+    text: string;
+    id: number;
+  }[];
 }
 
-class QueryPosts extends Query<IData> {}
+class QueryPosts extends Query<Data> {}
 
 const PostList = () => (
   <QueryPosts query={QUERY_POSTS}>
     {({ loading, error, data }) => {
       if (loading) return <Text>Loading...</Text>;
-      if (error) return <Text>Error: {error}</Text>;
+      if (error) {
+        return (
+          <Text>
+            Error:
+            {error}
+          </Text>
+        );
+      }
       if (!data) return <Text>No Data</Text>;
       return (
         <FlatList

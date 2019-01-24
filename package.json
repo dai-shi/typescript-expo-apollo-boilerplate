@@ -7,11 +7,10 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "test": "npm run tslint && npm run tsc-test && npm run jest",
-    "tslint": "tslint --project .",
+    "test": "npm run eslint && npm run tsc-test && npm run jest",
+    "eslint": "eslint --ext .ts,.tsx .",
     "tsc-test": "tsc --project . --noEmit",
-    "jest": "jest",
-    "jest-watch": "jest --watchAll"
+    "jest": "jest"
   },
   "repository": {
     "type": "git",
@@ -39,14 +38,18 @@
     "@types/react-native": "^0.57.15",
     "@types/react-navigation": "^3.0.1",
     "@types/react-test-renderer": "^16.0.3",
+    "@typescript-eslint/eslint-plugin": "^1.1.0",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.12.4",
     "expo-cli": "^2.6.0",
     "jest": "^23.6.0",
     "jest-expo": "^32.0.0",
     "react-dom": "^16.6.3",
     "react-test-renderer": "^16.6.3",
     "ts-jest": "^23.10.5",
-    "tslint": "^5.11.0",
-    "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.2.1"
   },
   "jest": {
