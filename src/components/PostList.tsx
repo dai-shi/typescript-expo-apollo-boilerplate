@@ -26,14 +26,7 @@ const PostList = () => (
   <QueryPosts query={QUERY_POSTS}>
     {({ loading, error, data }) => {
       if (loading) return <Text>Loading...</Text>;
-      if (error) {
-        return (
-          <Text>
-            Error:
-            {error}
-          </Text>
-        );
-      }
+      if (error) return <Text>Error:{error}</Text>;
       if (!data) return <Text>No Data</Text>;
       return (
         <FlatList
