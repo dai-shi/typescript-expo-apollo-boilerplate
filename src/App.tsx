@@ -32,18 +32,37 @@ const styles = StyleSheet.create({
   },
 });
 
-interface IProps {
+interface Props {
   skipLoadingScreen: boolean;
 }
 
-interface IStates {
+interface States {
   isLoadingComplete: boolean;
 }
 
-export default class App extends React.Component<IProps, IStates> {
+export default class App extends React.Component<Props, States> {
   public state = {
     isLoadingComplete: false,
   };
+
+  private loadResourcesAsync = async () => {
+    await Promise.all([
+      Asset.loadAsync([
+        // ...
+      ]),
+      Font.loadAsync({
+        // ...
+      }),
+    ]);
+  }
+
+  private handleLoadingError = () => {
+    // ...
+  }
+
+  private handleFinishLoading = () => {
+    this.setState({ isLoadingComplete: true });
+  }
 
   public render() {
     const { isLoadingComplete } = this.state;
@@ -65,24 +84,5 @@ export default class App extends React.Component<IProps, IStates> {
         </View>
       </ApolloProvider>
     );
-  }
-
-  private loadResourcesAsync = async () => {
-    await Promise.all([
-      Asset.loadAsync([
-        // ...
-      ]),
-      Font.loadAsync({
-        // ...
-      }),
-    ]);
-  }
-
-  private handleLoadingError = () => {
-    // ...
-  }
-
-  private handleFinishLoading = () => {
-    this.setState({ isLoadingComplete: true });
   }
 }

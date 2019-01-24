@@ -24,8 +24,10 @@ const posts = [{
 
 const mocks = {
   Mutation: () => ({
-    addPost: (_root: unknown, { text }: { text: string }) =>
-      posts.push({ text, id: Date.now() }),
+    addPost: (_root: unknown, { text }: { text: string }) => posts.push({
+      text,
+      id: Date.now(),
+    }),
   }),
   Query: () => ({
     posts: () => posts,
@@ -36,3 +38,5 @@ const schema = makeExecutableSchema({ typeDefs });
 addMockFunctionsToSchema({ mocks, schema });
 
 export const mockedLink = new SchemaLink({ schema });
+
+export default null;

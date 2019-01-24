@@ -4,38 +4,41 @@ import { TextInput } from 'react-native';
 import graphqlTag from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 
-interface IProps {
+interface Props {
   onSubmit: (text: string) => void;
 }
 
-interface IState {
+interface State {
   text: string;
 }
 
-class MyTextInput extends React.Component<IProps, IState> {
+class MyTextInput extends React.Component<Props, State> {
   public state = {
     text: '',
   };
 
+  private onSubmit = () => {
+    const { onSubmit } = this.props;
+    const { text } = this.state;
+    onSubmit(text);
+    this.setState({ text: '' });
+  }
+
+  private onChange = (text: string) => {
+    this.setState({ text });
+  }
+
   public render() {
+    const { text } = this.state;
     return (
       <TextInput
         style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
         placeholder="Enter text..."
         onSubmitEditing={this.onSubmit}
         onChangeText={this.onChange}
-        value={this.state.text}
+        value={text}
       />
     );
-  }
-
-  private onSubmit = () => {
-    this.props.onSubmit(this.state.text);
-    this.setState({ text: '' });
-  }
-
-  private onChange = (text: string) => {
-    this.setState({ text });
   }
 }
 
