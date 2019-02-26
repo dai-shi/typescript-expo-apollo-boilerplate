@@ -11,9 +11,7 @@
     "eslint": "eslint --ext .ts,.tsx .",
     "tsc-test": "tsc --project . --noEmit",
     "jest": "jest",
-    "postinstall": "patch-package && npm run patch-expo",
-    "patch-expo": "sed -i~ 's/build\\/Expo\\.js/build\\/Expo/' node_modules/expo/package.json",
-    "rndom": "node node_modules/react-native/local-cli/cli.js start"
+    "rndom": "node node_modules/react-native/local-cli/cli.js start --config ../../../react-native-dom-expo/metro.config.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +30,7 @@
     "react-apollo": "^2.3.2",
     "react-native": "0.57.8",
     "react-native-dom": "^0.4.1",
+    "react-native-dom-expo": "^0.0.1",
     "react-navigation": "^3.0.9"
   },
   "devDependencies": {
@@ -51,7 +50,6 @@
     "expo-cli": "^2.6.0",
     "jest": "^23.6.0",
     "jest-expo": "^32.0.0",
-    "patch-package": "^5.1.2",
     "react-dom": "^16.6.3",
     "react-test-renderer": "^16.6.3",
     "ts-jest": "^23.10.5",
