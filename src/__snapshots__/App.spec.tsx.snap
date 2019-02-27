@@ -185,7 +185,6 @@ exports[`App snapshot test 1`] = `
                   >
                     <Text
                       accessibilityTraits="header"
-                      accessible={false}
                       allowFontScaling={true}
                       numberOfLines={1}
                       onLayout={[Function]}
