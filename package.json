@@ -30,7 +30,7 @@
     "react-apollo": "^2.5.0",
     "react-native": "0.57.8",
     "react-native-dom": "^0.5.0",
-    "react-native-dom-expo": "^0.0.2",
+    "react-native-dom-expo": "0.0.7",
     "react-navigation": "^3.3.2"
   },
   "devDependencies": {
