@@ -22,5 +22,5 @@ $ npm start
 
 ## Blogs
 
-- [Clean Expo (React Native) + React Apollo (GraphQL) + TypeScript boilerplate](https://medium.com/@dai_shi/clean-expo-react-native-react-apollo-graphql-typescript-boilerplate-89bf6ff940de)
-- [Creating a Minimal Expo React Native Project with TypeScript and Jest](https://medium.com/@dai_shi/creating-a-minimal-expo-react-native-project-with-typescript-and-jest-5979ab8d7c15)
+- [Clean Expo (React Native) + React Apollo (GraphQL) + TypeScript boilerplate](https://blog.axlight.com/posts/clean-expo-react-native-react-apollo-graphql-typescript-boilerplate/)
+- [Creating a Minimal Expo React Native Project with TypeScript and Jest](https://blog.axlight.com/posts/creating-a-minimal-expo-react-native-project-with-typescript-and-jest/)
