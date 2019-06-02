@@ -90,6 +90,7 @@ exports[`App snapshot test 1`] = `
                   onChangeText={[Function]}
                   onSubmitEditing={[Function]}
                   placeholder="Enter text..."
+                  rejectResponderTermination={true}
                   style={
                     Object {
                       "borderColor": "gray",
@@ -185,7 +186,7 @@ exports[`App snapshot test 1`] = `
                   >
                     <Text
                       accessibilityTraits="header"
-                      allowFontScaling={true}
+                      allowFontScaling={false}
                       numberOfLines={1}
                       onLayout={[Function]}
                       style={

@@ -48,8 +48,10 @@ mutation addPost($text: String!) {
 }
 `;
 
+class MutationPost extends Mutation<{}> {}
+
 const NewPost = () => (
-  <Mutation mutation={ADD_POST} refetchQueries={['queryPosts']}>
+  <MutationPost mutation={ADD_POST} refetchQueries={['queryPosts']}>
     {(addPost) => {
       const add = (text: string) => {
         addPost({ variables: { text } });
@@ -58,7 +60,7 @@ const NewPost = () => (
         <MyTextInput onSubmit={add} />
       );
     }}
-  </Mutation>
+  </MutationPost>
 );
 
 export default NewPost;

@@ -7,10 +7,14 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
+    "web": "expo start --web",
     "test": "npm run eslint && npm run tsc-test && npm run jest",
     "eslint": "eslint --ext .ts,.tsx .",
     "tsc-test": "tsc --project . --noEmit",
-    "jest": "jest"
+    "jest": "jest",
+    "fix-jest-expo": "curl https://raw.githubusercontent.com/expo/expo/a734945/packages/jest-expo/jest-preset.js > node_modules/jest-expo/jest-preset.js",
+    "fix-expo-types": "sed -i~ 's/^.*deprecated.*$//' node_modules/expo/build/Expo.d.ts",
+    "postinstall": "npm run fix-jest-expo && npm run fix-expo-types"
   },
   "repository": {
     "type": "git",
@@ -19,60 +23,44 @@
   "author": "Daishi Kato",
   "license": "MIT",
   "dependencies": {
-    "apollo-cache-inmemory": "^1.5.0",
-    "apollo-client": "^2.5.0",
-    "apollo-link-schema": "^1.1.6",
-    "expo": "^32.0.6",
+    "apollo-cache-inmemory": "^1.6.0",
+    "apollo-client": "^2.6.0",
+    "apollo-link-schema": "^1.2.2",
+    "expo": "^33.0.0",
+    "expo-asset": "^5.0.0",
+    "expo-font": "^5.0.0",
     "graphql-tag": "^2.10.1",
     "graphql-tools": "^4.0.4",
-    "react": "16.5.0",
-    "react-apollo": "^2.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-navigation": "^3.3.2"
+    "react": "16.8.3",
+    "react-apollo": "^2.5.6",
+    "react-dom": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native-web": "^0.11.4",
+    "react-navigation": "^3.11.0"
   },
   "devDependencies": {
-    "@types/expo": "^32.0.3",
-    "@types/graphql": "^14.0.7",
-    "@types/jest": "^24.0.9",
-    "@types/react": "^16.8.5",
-    "@types/react-native": "^0.57.38",
-    "@types/react-navigation": "^3.0.4",
+    "@types/graphql": "^14.2.0",
+    "@types/jest": "^24.0.13",
+    "@types/react": "^16.8.19",
+    "@types/react-native": "^0.57.60",
+    "@types/react-navigation": "^3.0.7",
     "@types/react-test-renderer": "^16.8.1",
-    "@typescript-eslint/eslint-plugin": "^1.4.2",
-    "eslint": "^5.14.1",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "babel-preset-expo": "^5.1.1",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4",
-    "expo-cli": "^2.11.3",
-    "jest": "^24.1.0",
-    "jest-expo": "^32.0.0",
-    "react-dom": "^16.8.3",
-    "react-test-renderer": "^16.8.3",
-    "ts-jest": "^24.0.0",
-    "typescript": "^3.3.3333"
+    "eslint-plugin-react": "^7.13.0",
+    "expo-cli": "^2.18.7",
+    "expo-react-native-adapter": "^3.0.1",
+    "jest": "^24.8.0",
+    "jest-expo": "^33.0.0",
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6",
+    "typescript": "^3.5.1"
   },
   "jest": {
-    "preset": "jest-expo",
-    "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testMatch": [
-      "**/__tests__/**/*.ts?(x)",
-      "**/?(*.)+(spec|test).ts?(x)"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "ts",
-      "tsx"
-    ],
-    "globals": {
-      "ts-jest": {
-        "tsConfig": {
-          "jsx": "react"
-        }
-      }
-    }
+    "preset": "jest-expo"
   }
 }

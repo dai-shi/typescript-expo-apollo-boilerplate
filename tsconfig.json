@@ -7,15 +7,9 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
     "types": [
       "jest"
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "expo": [
-        "node_modules/@types/expo",
-        "node_modules/expo"
-      ]
-    }
+    ]
   }
 }
