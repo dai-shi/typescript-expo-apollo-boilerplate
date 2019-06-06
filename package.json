@@ -10,11 +10,11 @@
     "web": "expo start --web",
     "test": "npm run eslint && npm run tsc-test && npm run jest",
     "eslint": "eslint --ext .ts,.tsx .",
-    "tsc-test": "tsc --project . --noEmit",
+    "tsc-test": "tsc --project .",
     "jest": "jest",
-    "fix-jest-expo": "curl https://raw.githubusercontent.com/expo/expo/a734945/packages/jest-expo/jest-preset.js > node_modules/jest-expo/jest-preset.js",
     "fix-expo-types": "sed -i~ 's/^.*deprecated.*$//' node_modules/expo/build/Expo.d.ts",
-    "postinstall": "npm run fix-jest-expo && npm run fix-expo-types"
+    "hack-mjs-entries": "sed -i~ 's/^.*module.*index\\.mjs.*$//' node_modules/iterall/package.json node_modules/graphql/package.json",
+    "postinstall": "npm run fix-expo-types && npm run hack-mjs-entries"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "expo": "^33.0.0",
     "expo-asset": "^5.0.0",
     "expo-font": "^5.0.0",
+    "graphql": "^14.3.1",
     "graphql-tag": "^2.10.1",
     "graphql-tools": "^4.0.4",
     "react": "16.8.3",
@@ -52,11 +53,9 @@
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",
-    "expo-cli": "^2.18.7",
     "expo-react-native-adapter": "^3.0.1",
     "jest": "^24.8.0",
     "jest-expo": "^33.0.0",
-    "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
     "typescript": "^3.5.1"
   },

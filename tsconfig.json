@@ -1,15 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "lib": ["es2017", "esnext.asynciterable"],
-    "moduleResolution": "node",
+    "noEmit": true,
+    "lib": ["esnext"],
     "jsx": "react-native",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "allowSyntheticDefaultImports": true,
-    "types": [
-      "jest"
-    ]
+    "noUnusedParameters": true
   }
 }
