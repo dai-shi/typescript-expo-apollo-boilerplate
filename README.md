@@ -1,3 +1,7 @@
+Unmaintained Notice: Because the latest Expo handles TypeScript natively, I don't think this repo provides much benefit. Furthermore, as React Apollo supports React Hooks, I think the pattern with render props is obsoleted.
+
+----
+
 # typescript-expo-apollo-boilerplate
 
 Clean boilerplate for TypeScript + Expo (React Native) + React Apollo (GraphQL)
