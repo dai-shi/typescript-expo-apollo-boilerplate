@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import {
   Platform,
   StatusBar,
@@ -7,22 +7,30 @@ import {
 } from 'react-native';
 
 import { AppLoading } from 'expo';
-
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { ApolloClient } from 'apollo-client';
-// import { HttpLink } from 'apollo-link-http';
-import { ApolloProvider } from 'react-apollo';
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  // HttpLink,
+  ApolloLink,
+} from '@apollo/client';
+
+import { NavigationNativeContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import HomeScreen from './screens/HomeScreen';
 
 import { mockedLink } from './mock';
-import AppNavigator from './navigation/AppNavigator';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: mockedLink, // new HttpLink()
+  link: mockedLink as unknown as ApolloLink, // new HttpLink('...'),
 });
+
+const Stack = createStackNavigator();
 
 const styles = StyleSheet.create({
   container: {
@@ -31,20 +39,14 @@ const styles = StyleSheet.create({
   },
 });
 
-interface Props {
+type Props = {
   skipLoadingScreen: boolean;
-}
+};
 
-interface States {
-  isLoadingComplete: boolean;
-}
+const App: React.FC<Props> = ({ skipLoadingScreen }) => {
+  const [isLoadingComplete, setLoadingComplete] = useState(false);
 
-export default class App extends React.Component<Props, States> {
-  public state = {
-    isLoadingComplete: false,
-  };
-
-  private loadResourcesAsync = async () => {
+  const loadResourcesAsync = async () => {
     await Promise.all([
       Asset.loadAsync([
         // ...
@@ -53,35 +55,37 @@ export default class App extends React.Component<Props, States> {
         // ...
       }),
     ]);
-  }
+  };
 
-  private handleLoadingError = () => {
+  const handleLoadingError = () => {
     // ...
-  }
+  };
 
-  private handleFinishLoading = () => {
-    this.setState({ isLoadingComplete: true });
-  }
+  const handleFinishLoading = () => {
+    setLoadingComplete(true);
+  };
 
-  public render() {
-    const { isLoadingComplete } = this.state;
-    const { skipLoadingScreen } = this.props;
-    if (!isLoadingComplete && !skipLoadingScreen) {
-      return (
-        <AppLoading
-          startAsync={this.loadResourcesAsync}
-          onError={this.handleLoadingError}
-          onFinish={this.handleFinishLoading}
-        />
-      );
-    }
+  if (!isLoadingComplete && !skipLoadingScreen) {
     return (
-      <ApolloProvider client={client}>
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
-        </View>
-      </ApolloProvider>
+      <AppLoading
+        startAsync={loadResourcesAsync}
+        onError={handleLoadingError}
+        onFinish={handleFinishLoading}
+      />
     );
   }
-}
+  return (
+    <ApolloProvider client={client}>
+      <NavigationNativeContainer>
+        <View style={styles.container}>
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen} />
+          </Stack.Navigator>
+        </View>
+      </NavigationNativeContainer>
+    </ApolloProvider>
+  );
+};
+
+export default App;

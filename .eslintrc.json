@@ -17,6 +17,8 @@
   "rules": {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/indent": ["error", 2],
+    "import/extensions": ["error", "never"],
+    "react/prop-types": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
     "react/jsx-one-expression-per-line": "off"
   },

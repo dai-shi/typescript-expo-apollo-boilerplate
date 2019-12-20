@@ -1,66 +1,32 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { TextInput } from 'react-native';
 
-import graphqlTag from 'graphql-tag';
-import { Mutation } from 'react-apollo';
+import { gql, useMutation } from '@apollo/client';
 
-interface Props {
-  onSubmit: (text: string) => void;
-}
-
-interface State {
-  text: string;
-}
-
-class MyTextInput extends React.Component<Props, State> {
-  public state = {
-    text: '',
-  };
-
-  private onSubmit = () => {
-    const { onSubmit } = this.props;
-    const { text } = this.state;
-    onSubmit(text);
-    this.setState({ text: '' });
-  }
-
-  private onChange = (text: string) => {
-    this.setState({ text });
-  }
-
-  public render() {
-    const { text } = this.state;
-    return (
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        placeholder="Enter text..."
-        onSubmitEditing={this.onSubmit}
-        onChangeText={this.onChange}
-        value={text}
-      />
-    );
-  }
-}
-
-const ADD_POST = graphqlTag`
+const ADD_POST = gql`
 mutation addPost($text: String!) {
   addPost(text: $text)
 }
 `;
 
-class MutationPost extends Mutation<{}> {}
-
-const NewPost = () => (
-  <MutationPost mutation={ADD_POST} refetchQueries={['queryPosts']}>
-    {(addPost) => {
-      const add = (text: string) => {
-        addPost({ variables: { text } });
-      };
-      return (
-        <MyTextInput onSubmit={add} />
-      );
-    }}
-  </MutationPost>
-);
+const NewPost = () => {
+  const [addPost] = useMutation(ADD_POST, {
+    refetchQueries: ['queryPosts'],
+  });
+  const [text, setText] = useState('');
+  const onSubmit = () => {
+    addPost({ variables: { text } });
+    setText('');
+  };
+  return (
+    <TextInput
+      style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+      placeholder="Enter text..."
+      onSubmitEditing={onSubmit}
+      onChangeText={setText}
+      value={text}
+    />
+  );
+};
 
 export default NewPost;

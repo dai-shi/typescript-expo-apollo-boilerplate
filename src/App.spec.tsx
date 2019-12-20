@@ -1,13 +1,13 @@
-import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import React from 'react';
+import TestRenderer from 'react-test-renderer';
 
 import App from './App';
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 describe('App', () => {
   it('snapshot test', async () => {
-    const tree = renderer.create(
+    const tree = TestRenderer.create(
       <App skipLoadingScreen />,
     ).toJSON();
     await sleep(1);

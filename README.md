@@ -1,35 +1,21 @@
-Unmaintained Notice: Because the latest Expo handles TypeScript natively, I don't think this repo provides much benefit. Furthermore, as React Apollo supports React Hooks, I think the pattern with render props is obsoleted.
-
-----
-
 # typescript-expo-apollo-boilerplate
 
-Clean boilerplate for TypeScript + Expo (React Native) + React Apollo (GraphQL)
+A boilerplate for TypeScript + Expo + Apollo Client v3 + React Navigation v5
 
 ## What is this?
 
-This is example base code to use React Native and GraphQL.
-We use Expo to ease building the environment.
-We use React Apollo to use GraphQL.
-We use TypeScript instead of JavaScript for static type checking.
+This is minimal example code using following libraries:
 
-## Features
-
-- minimal code without extra configs
-- no-any/noImplicitAny configs for TypeScript
-- client-side mocking for developing before building a GraphQL server
+- Expo SDK36 with TypeScript
+- Apollo Client v3 with mocking
+- React Navigation v5
 
 ## How to run
 
 ```bash
 npm install -g expo-cli
-git clone https://github.com/dai-shi/typescript-expo-apollo-boilerplate.git
+git clone -b v2 https://github.com/dai-shi/typescript-expo-apollo-boilerplate.git
 cd typescript-expo-apollo-boilerplate
 npm install
 npm start
 ```
-
-## Blogs
-
-- [Clean Expo (React Native) + React Apollo (GraphQL) + TypeScript boilerplate](https://blog.axlight.com/posts/clean-expo-react-native-react-apollo-graphql-typescript-boilerplate/)
-- [Creating a Minimal Expo React Native Project with TypeScript and Jest](https://blog.axlight.com/posts/creating-a-minimal-expo-react-native-project-with-typescript-and-jest/)
