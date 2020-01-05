@@ -22,6 +22,7 @@ import { NavigationNativeContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from './screens/HomeScreen';
+import AboutScreen from './screens/AboutScreen';
 
 import { mockedLink } from './mock';
 
@@ -81,6 +82,7 @@ const App: React.FC<Props> = ({ skipLoadingScreen }) => {
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           <Stack.Navigator>
             <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="About" component={AboutScreen} />
           </Stack.Navigator>
         </View>
       </NavigationNativeContainer>
